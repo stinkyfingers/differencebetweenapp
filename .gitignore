@@ -1,0 +1,10 @@
+vars.env
+notes.txt
+setups.txt
+punchlines.txt
+api/scripts
+server/
+webapp/
+gitbak/
+*/node_modules/
+terraform/.terraform/*

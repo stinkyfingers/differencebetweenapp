@@ -1,0 +1,96 @@
+/* main */
+body {
+  --grey: #eee;
+  --black: #282D33;
+  --blue: #03547E;
+  --light-blue: #B2E0FF;
+  --yellow: #eb0;
+  color: var(--black);
+}
+
+.pageHeader {
+  background: var(--blue);
+  color: var(--light-blue);
+  text-align: center;
+}
+
+.warning {
+  color: var(--yellow);
+}
+
+/* game  */
+div.findGame, div.createGame {
+  margin: 3em;
+}
+
+/* play */
+div.setupPhrase {
+  background-color: var(--light-blue);
+  color: var(--blue);
+  font-size: 2em;
+  padding: 1em 0;
+}
+div.directions {
+  font-style: italic;
+  font-size: .6em
+}
+div.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+}
+div.punchline, div.vote {
+  border: 2px solid var(--black);
+  border-radius: 6px;
+  padding: .6em;
+  margin: 1em 0;
+  width: 30%;
+  font-size: 2em;
+}
+input.customInput {
+  width: 95%;
+}
+
+div.punchline:hover, div.vote:hover {
+  cursor: pointer;
+  background-color: var(--light-blue);
+}
+
+div.selected {
+  background-color: var(--light-blue);
+  color: var(--blue);
+}
+
+input.customInput {
+  font-size: 1.4em
+}
+
+/* scores */
+div.scores {
+  text-align: left;
+  width: 60%;
+  margin: auto;
+  line-height: 2
+}
+
+.total {
+  font-size: 1.5em;
+  background-color: var(--grey);
+  padding: 0 1em;
+}
+
+span.setup {
+  font-weight: 800;
+}
+span.player {
+  font-style: italic;;
+}
+
+
+@media (max-width: 1024px) {
+  div.scores {
+    width: 90%;
+  }
+}
