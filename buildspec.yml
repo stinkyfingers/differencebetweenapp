@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+    commands:
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+      - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+      - apt-get update -y
+      - apt-get install -y yarn
+  pre_build:
+    commands:
+      - yarn install
+  build:
+    commands:
+      - yarn build
+  post_build:
+    commands:
+      - aws s3 sync build s3://differencebetween.john-shenk.com
+      - aws cloudfront create-invalidation --distribution-id E15NRVHVPCUS7W --paths /index.html /static/*
