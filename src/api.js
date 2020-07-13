@@ -42,5 +42,19 @@ const playGame = async ({ id, onmessage, onerror }) => {
   return connection;
 }
 
+const getStatus = async () => {
+  try {
+    const resp = await fetch(`${api}/status`, {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+    });
+    const u = await resp.text();
+    if (u.error) return {error: u.error};
+    return u;
+  } catch (err) {
+    return { error: err };
+  }
+}
 
-export { createGame, playGame, joinGame };
+
+export { createGame, playGame, joinGame, getStatus };
