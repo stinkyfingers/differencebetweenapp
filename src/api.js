@@ -1,8 +1,8 @@
 import { api, ws } from './config';
 
-const createGame = async ({ player, rounds }) => {
+const createGame = async ({ player, rounds, clean }) => {
   try {
-    const resp = await fetch(`${api}/game`, {
+    const resp = await fetch(`${api}/game?pg=${clean}`, {
       method: 'POST',
       body: JSON.stringify({ player, rounds }),
       headers: {'Content-Type': 'application/json'}

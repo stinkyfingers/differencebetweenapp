@@ -6,6 +6,7 @@ import { player } from '../storage';
 const CreateGame = () => {
   const defaultRounds = 6;
 	const [rounds, setRounds] = useState(defaultRounds);
+  const [clean, setClean] = useState(false);
   const [error, setError] = useState();
 
 	const handleChange = (e) => {
@@ -24,13 +25,17 @@ const CreateGame = () => {
 	};
 
 	const handleClick = async() => {
-    const game = await createGame({ player: player.get(), rounds });
+    const game = await createGame({ player: player.get(), rounds, clean });
     if (game.error) {
       setError(JSON.stringify(game));
       return;
     }
     window.location.replace(`/${game.id}`);
 	};
+
+  const handleCheck = (e) => {
+    setClean(e.target.checked);
+  }
 
 	return (
 		<div className="createGame">
@@ -39,6 +44,9 @@ const CreateGame = () => {
       <label htmlFor="rounds">Rounds:
 				<input name="rounds" type='number' defaultValue={defaultRounds} min='1' max='10' onChange={handleChange} />
 			</label>
+      <label htmlFor="clean">Keep it clean...mostly:
+        <input type='checkbox' onClick={handleCheck} name='clean' />
+      </label>
 			<button className="createGame" onClick={handleClick} disabled={error || !player.get() ? 'disabled' : null}>Create</button>
       {!player.get() ? <div className='warning'>Username required</div> : null}
 		</div>
