@@ -10,7 +10,7 @@
 	padding-bottom: 1em;
 }
 
-.logo {
+img.logo {
 	max-height: 80px;
 	max-width: 96%;
 }
@@ -22,4 +22,10 @@
 .info {
 	display: flex;
 	flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+	.header {
+		flex-direction: column;
+	}
 }

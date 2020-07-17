@@ -10,7 +10,9 @@ const Header  = ({ nameCallback }) => {
 
   return (
     <div className="header">
-        <img className="logo" src={require("../logos/logo.png")} alt="The Difference Between" onClick={handleClick} />
+        <div className='logo'>
+          <img className="logo" src={require("../logos/logo.png")} alt="The Difference Between" onClick={handleClick} />
+        </div>
         <div className='info'>
           <Name nameCallback={nameCallback} />
           <span className='id'>{id ? `Game Number: ${id}` : ''}</span>
