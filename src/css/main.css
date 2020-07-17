@@ -58,11 +58,17 @@ div.punchline, div.vote {
   border-radius: 6px;
   padding: .6em;
   margin: 1em 0;
-  width: 30%;
+  flex-basis: 30%;
   font-size: 2em;
+  overflow-wrap: break-word;
 }
+
 input.customInput {
   width: 95%;
+}
+
+div.customPunchline {
+  border: 2px solid var(--blue);
 }
 
 div.punchline:hover, div.vote:hover {
@@ -104,5 +110,8 @@ span.player {
 @media (max-width: 1024px) {
   div.scores {
     width: 90%;
+  }
+  div.cards {
+    flex-direction: column;
   }
 }

@@ -21,11 +21,7 @@ const Play = () => {
 		if (data.message) setError(data.message);
 		setGame(data);
 	}
-	const connect = async() => {
-		const id = window.location.pathname.replace('/', '');
-		const connection = await playGame({ id, onmessage, onerror });
-		setConn(connection);
-	}
+
 	const handlePunchline = (punchline) => {
 		conn.send({ name, punchline });
 	}
@@ -56,6 +52,11 @@ const Play = () => {
 	};
 
 	useEffect(() => {
+		const connect = async() => {
+			const id = window.location.pathname.replace('/', '');
+			const connection = await playGame({ id, onmessage, onerror });
+			setConn(connection);
+		}
 		connect();
 	}, []);
 

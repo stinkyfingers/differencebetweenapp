@@ -18,11 +18,11 @@ const Punchline = ({ game, player, onClick }) => {
 
   const getLines = () => {
     const punchlines = _.get(_.find(game.players, (p) => p.name === player), 'punchlines');
-    const customCard = custom ? <div key='customPunchline' className={selected === custom ? 'selected punchline' : 'punchline'} onClick={handleClick}>{custom}</div> : null;
+    const customCard = custom ? <div key='customPunchline' className={selected === custom ? 'selected punchline customPunchline' : 'punchline customPunchline'} onClick={handleClick}>{custom}</div> : null;
     const cards = _.map(punchlines, (p) => {
       return (<div key={p} className={selected === p ? 'selected punchline' : 'punchline'} onClick={handleClick}>{p}</div>);
     });
-    return _.union(cards, [customCard]);
+    return _.union([customCard], cards);
   };
 
   const isWaiting = () => {
