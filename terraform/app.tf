@@ -23,6 +23,11 @@ resource "aws_s3_bucket" "db" {
 EOF
 }
 
+resource "aws_s3_bucket" "punchlines" {
+  bucket = "differencebetween"
+  acl = "private"
+}
+
 resource "aws_s3_bucket_public_access_block" "db" {
   bucket = aws_s3_bucket.db.id
   block_public_acls   = true
