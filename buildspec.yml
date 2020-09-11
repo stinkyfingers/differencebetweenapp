@@ -19,3 +19,4 @@ phases:
     commands:
       - aws s3 sync build s3://differencebetween.john-shenk.com
       - aws cloudfront create-invalidation --distribution-id E15NRVHVPCUS7W --paths /index.html /static/*
+      - aws s3 sync punchlines s3://differencebetween
