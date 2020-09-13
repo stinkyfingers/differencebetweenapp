@@ -30,6 +30,10 @@ const CreateGame = () => {
       setError(JSON.stringify(game));
       return;
     }
+    if (game.message) {
+      setError(JSON.stringify(game.message));
+      return;
+    }
     window.location.replace(`/${game.id}`);
 	};
 
