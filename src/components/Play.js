@@ -60,6 +60,14 @@ const Play = () => {
 		connect();
 	}, []);
 
+	useEffect(() => {
+		if (!conn) return;
+		const t = setInterval(() => {
+			conn.send({ ping: name });
+		}, 50000);
+		return () => clearInterval(t);
+	}, [conn, name]);
+
 	return (
 		<div className="play">
 			{error ? <Error message={error} /> : null}
