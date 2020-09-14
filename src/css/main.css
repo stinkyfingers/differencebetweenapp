@@ -5,12 +5,12 @@ body {
   --blue: #03547E;
   --light-blue: #B2E0FF;
   --yellow: #eb0;
+  --red: #e00;
   color: var(--black);
 }
 
 .pageHeader {
-  background: var(--blue);
-  color: var(--light-blue);
+  color: var(--blue);
   text-align: center;
   margin-top: 0;
 }
@@ -19,12 +19,50 @@ body {
   color: var(--yellow);
 }
 
+.error {
+  color: var(--red);
+  margin: .4em
+}
+
+button {
+  color: var(--light-blue);
+  background-color: var(--blue);
+  border: none;
+  border-radius: 2px;
+  font-size: 1.4em;
+  padding: .2em
+}
+
+button:hover:enabled {
+  cursor: pointer;
+  color: var(--grey);
+}
+
+button:disabled {
+  background-color: var(--grey);
+  cursor: arrow;
+}
+
+input {
+  font-size: 1.2em;
+}
+
 /* game  */
+div.game {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 div.findGame, div.createGame {
   margin: 3em;
   font-size: 1.2em;
   display: flex;
   flex-direction: column;
+  min-width: 33%;
+  border: 1px solid var(--blue);
+  border-radius: 2px;
+  padding: 1em 0;
 }
 div.createGame>button,div.findGame>button  {
   margin-left: auto;
@@ -44,7 +82,7 @@ div.setupPhrase {
 }
 div.directions {
   font-style: italic;
-  font-size: .6em
+  font-size: 1.2em
 }
 div.cards {
   display: flex;
@@ -63,8 +101,14 @@ div.punchline, div.vote {
   overflow-wrap: break-word;
 }
 
+div.playerName {
+  font-size: .6em;
+  color: var(--blue);
+}
+
 input.customInput {
-  width: 95%;
+  width: 45%;
+  background-color: var(--grey);
 }
 
 div.customPunchline {
@@ -105,13 +149,18 @@ span.setup {
 span.player {
   font-style: italic;;
 }
-
+div.scoreBoard {
+  text-align: center;
+}
 
 @media (max-width: 1024px) {
   div.scores {
     width: 90%;
   }
   div.cards {
+    flex-direction: column;
+  }
+  div.game {
     flex-direction: column;
   }
 }

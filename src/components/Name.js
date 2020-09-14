@@ -18,7 +18,7 @@ const Name = ({ nameCallback }) => {
 	const handleClick = async () => {
     player.set(name);
 		userState.setUser(name);
-	}
+	};
 
 	return (
 		<div className="name">

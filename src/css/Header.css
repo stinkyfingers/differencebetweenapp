@@ -24,8 +24,19 @@ img.logo {
 	flex-direction: column;
 }
 
+div.welcome {
+	font-size: 1.2em;
+}
+
+div.gameNumberInstructions {
+	font-size: .6em
+}
+
 @media (max-width: 1024px) {
 	.header {
 		flex-direction: column;
+	}
+	.info {
+		padding: 0;
 	}
 }

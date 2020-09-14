@@ -5,7 +5,8 @@ const Scores = ({ game }) => {
   const tabulate = () => {
     const totals = {};
     _.map(game.rounds, (round) => {
-      _.forEach(round.votes, (v, player) => {
+      _.forEach(round.votes, (v) => {
+        const player = _.findKey(round.plays, play => play === v);
         if (!totals[player]) {
           totals[player] = 0;
         }
@@ -36,7 +37,7 @@ const Scores = ({ game }) => {
   return (
     <div className='scores'>
       <h3 className='pageHeader'>Scores</h3>
-      {tabulate()}
+      <div className='scoreBoard'>{tabulate()}</div>
       {showAll()}
     </div>
   )

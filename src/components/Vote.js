@@ -6,15 +6,16 @@ import Waiting from './Waiting';
 const Vote = ({ game, player, onClick }) => {
   const [selected, setSelected] = React.useState();
 
-  const handleClick = (e) => {
-    onClick(e.target.innerHTML);
-    setSelected(e.target.innerHTML);
+  const handleClick = (value) => {
+    onClick(value);
+    setSelected(value);
   }
 
   const getLines = () => {
+
     const votes = _.get(game.rounds, [game.roundsRemaining - 1, 'plays'])
-    return _.map(votes, (v) => {
-      return (<div key={v} className={selected === v ? 'selected vote' : 'vote'} onClick={handleClick}>{v}</div>)
+    return _.map(votes, (v, i) => {
+      return (<div key={v} className={selected === v ? 'selected vote' : 'vote'} onClick={() => handleClick(v)}>{v}<div className='playerName'>{`(${i})`}</div></div>)
     });
   };
 
@@ -27,7 +28,7 @@ const Vote = ({ game, player, onClick }) => {
 
   return (
     <div className='votePage'>
-      <div className='directions'>Vote for your favorite:</div>
+      <div className='directions'>Vote for your favorite punchline from the hilarious options below:</div>
       <div className='cards'>
         {isWaiting() ? <Waiting /> : getLines()}
       </div>

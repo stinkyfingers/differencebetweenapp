@@ -33,7 +33,7 @@ const Punchline = ({ game, player, onClick }) => {
 
   return (
     <div className='punchlinePage'>
-      <div className='directions'>Select best answer:</div>
+      <div className='directions'>Select your favorite punchline from the options below or create your own:</div>
       <input type='text' onChange={handleChange} name='custom' className='customInput' placeholder='enter a custom punchline here...'/>
       <div className='cards'>
         {isWaiting() ? <Waiting /> : getLines()}
