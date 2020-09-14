@@ -11,9 +11,9 @@ const CreateGame = () => {
 
 	const handleChange = (e) => {
     setError(null);
+    const rounds = parseInt(e.target.value, 10);
     switch (e.target.name) {
       case 'rounds':
-        const rounds = parseInt(e.target.value, 10);
         if (rounds < 1 || rounds > 10) {
           setError('rounds must be between 1 and 10');
           return;

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { player } from '../storage';
 import UserContext from '../UserContext';
 
-const Name = ({ nameCallback }) => {
+const Name = () => {
 	const [name, setName] = useState(player.get());
-	 const userState = React.useContext(UserContext);
+	const userState = React.useContext(UserContext);
 
 	const handleChange = (e) => {
 		switch (e.target.name) {
