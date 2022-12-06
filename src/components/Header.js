@@ -1,9 +1,10 @@
 import React from 'react';
 import '../css/Header.css';
 import Name from './Name';
-import { player } from '../storage';
+import UserContext from '../UserContext';
 
 const Header  = ({ nameCallback }) => {
+  const userState = React.useContext(UserContext);
   const handleClick = () => {
     window.location.replace(`/`);
   }
@@ -15,7 +16,7 @@ const Header  = ({ nameCallback }) => {
           <img className="logo" src={require("../logos/logo.png")} alt="The Difference Between" onClick={handleClick} />
         </div>
         <div className='welcome'>
-          <div className='playerName'>{player.get() ? '': 'Please enter your name'}</div>
+          <div className='playerName'>{userState.user ? '': 'Please enter your name'}</div>
           <div className='id'>{id ? `Game Number: ${id}` : ''}</div>
           <div className='gameNumberInstructions'>Provide this number to your friends before starting</div>
         </div>

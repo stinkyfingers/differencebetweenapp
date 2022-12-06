@@ -4,14 +4,17 @@ import Error from './Error';
 import Punchline from './Punchline';
 import Vote from './Vote';
 import Scores from './Scores';
-import { player } from '../storage';
 import '../css/main.css';
+import UserContext from '../UserContext';
 
 const Play = () => {
+	const userState = React.useContext(UserContext);
+
 	const [game, setGame] = useState(null);
 	const [error, setError] = useState();
 	const [conn, setConn] = useState();
-	const name = player.get();
+	const name = userState.user || '';
+	console.log(game, userState)
 
 	const onerror = (err) => {
 		setError(JSON.stringify(err));

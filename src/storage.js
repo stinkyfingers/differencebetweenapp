@@ -3,7 +3,6 @@ const player = {
   set: (player) => localStorage.setItem('name', player)
 };
 
-
 export {
   player
 };

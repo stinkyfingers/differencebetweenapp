@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { createGame } from '../api';
 import Error from './Error';
-import { player } from '../storage';
+import UserContext from '../UserContext';
 
 const CreateGame = () => {
+  const userState = React.useContext(UserContext);
+
   const defaultRounds = 6;
 	const [rounds, setRounds] = useState(defaultRounds);
   const [clean, setClean] = useState(false);
   const [error, setError] = useState();
+  
 
 	const handleChange = (e) => {
     setError(null);
@@ -25,7 +28,7 @@ const CreateGame = () => {
 	};
 
 	const handleClick = async() => {
-    const game = await createGame({ player: player.get(), rounds, clean });
+    const game = await createGame({ player: userState.user, rounds, clean });
     if (game.error) {
       setError(JSON.stringify(game));
       return;
@@ -51,8 +54,8 @@ const CreateGame = () => {
       <label htmlFor="clean">Keep it clean...mostly:
         <input type='checkbox' onClick={handleCheck} name='clean' />
       </label>
-			<button className="createGame" onClick={handleClick} disabled={error || !player.get() ? 'disabled' : null}>Create</button>
-      {!player.get() ? <div className='warning'>Username required</div> : null}
+			<button className="createGame" onClick={handleClick} disabled={error || !userState.user ? 'disabled' : null}>Create</button>
+      {!userState.user ? <div className='warning'>Username required</div> : null}
 		</div>
 	);
 }

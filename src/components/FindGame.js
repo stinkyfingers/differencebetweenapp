@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { joinGame } from '../api';
 import Error from './Error';
-import { player } from '../storage';
-
+import UserContext from '../UserContext';
 
 const FindGame = () => {
+	const userState = React.useContext(UserContext);
+
 	const [id, setId] = useState();
 	const [error, setError] = useState();
 
@@ -18,7 +19,7 @@ const FindGame = () => {
 	}
 
 	const handleClick = async () => {
-		const name = player.get();
+		const name = userState.user;
 		const game = await joinGame({ player: name, id });
 		if (game.message) {
 			setError(game.message);
@@ -40,8 +41,8 @@ const FindGame = () => {
 			<label htmlFor="id">
 				<input name="id" placeholder="Enter Game number..." onChange={handleChange} type="number" />
 			</label>
-			<button className="btn findGame" onClick={handleClick}  disabled={error || !player.get() ? 'disabled' : null}>Search</button>
-			{!player.get() ? <div className='warning'>Username required</div> : null}
+			<button className="btn findGame" onClick={handleClick}  disabled={error || !userState.user ? 'disabled' : null}>Search</button>
+			{!userState.user ? <div className='warning'>Username required</div> : null}
 			{error === 'player name already exists' ? <button className='btn goToGame' onClick={handleRedirect}>Go To Game</button> : null}
 		</div>
 	);
