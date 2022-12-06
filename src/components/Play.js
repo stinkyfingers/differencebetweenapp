@@ -14,7 +14,6 @@ const Play = () => {
 	const [error, setError] = useState();
 	const [conn, setConn] = useState();
 	const name = userState.user || '';
-	console.log(game, userState)
 
 	const onerror = (err) => {
 		setError(JSON.stringify(err));

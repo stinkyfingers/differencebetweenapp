@@ -8,6 +8,7 @@ const Header  = ({ nameCallback }) => {
   const handleClick = () => {
     window.location.replace(`/`);
   }
+
   const id = window.location.pathname.replace('/', '');
 
   return (
@@ -16,9 +17,13 @@ const Header  = ({ nameCallback }) => {
           <img className="logo" src={require("../logos/logo.png")} alt="The Difference Between" onClick={handleClick} />
         </div>
         <div className='welcome'>
-          <div className='playerName'>{userState.user ? '': 'Please enter your name'}</div>
-          <div className='id'>{id ? `Game Number: ${id}` : ''}</div>
-          <div className='gameNumberInstructions'>Provide this number to your friends before starting</div>
+          <div className='playerName'>{ `Welcome, ${userState.user}` || 'Please enter your name'}</div>
+          { id && (
+            <>
+              <div className='id'>{id ? `Game Number: ${id}` : ''}</div>
+              <div className='gameNumberInstructions'>Provide this number to your friends before starting</div>
+            </>
+          )}
         </div>
         <div className='info'>
           <Name nameCallback={nameCallback} />

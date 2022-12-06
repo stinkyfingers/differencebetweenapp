@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { joinGame } from '../api';
 import Error from './Error';
 import UserContext from '../UserContext';
+import '../css/findgame.css';
 
 const FindGame = () => {
 	const userState = React.useContext(UserContext);
@@ -39,7 +40,7 @@ const FindGame = () => {
 			<h3 className='pageHeader'>Find & Join Game</h3>
 			{ error ? <Error message={error} /> : null }
 			<label htmlFor="id">
-				<input name="id" placeholder="Enter Game number..." onChange={handleChange} type="number" />
+				<input name="id" placeholder="Enter Game number..." onChange={handleChange} type="number" className="gameNumber" />
 			</label>
 			<button className="btn findGame" onClick={handleClick}  disabled={error || !userState.user ? 'disabled' : null}>Search</button>
 			{!userState.user ? <div className='warning'>Username required</div> : null}

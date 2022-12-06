@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createGame } from '../api';
 import Error from './Error';
 import UserContext from '../UserContext';
+import '../css/creategame.css'
 
 const CreateGame = () => {
   const userState = React.useContext(UserContext);
@@ -49,7 +50,7 @@ const CreateGame = () => {
       <h3 className='pageHeader'>Create New Game</h3>
       {error ? <Error message={error} /> : null}
       <label htmlFor="rounds">Rounds:
-				<input name="rounds" type='number' defaultValue={defaultRounds} min='1' max='10' onChange={handleChange} />
+				<input name="rounds" type='number' defaultValue={defaultRounds} min='1' max='10' onChange={handleChange} className="createGameRounds"/>
 			</label>
       <label htmlFor="clean">Keep it clean...mostly:
         <input type='checkbox' onClick={handleCheck} name='clean' />

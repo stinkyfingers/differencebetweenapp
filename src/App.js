@@ -32,7 +32,6 @@ const App = () => {
   const [error, setError] = React.useState();
 
   const userState = useUser();
-  console.log(userState)
 
   React.useEffect(() => {
     const fetchStatus = async() => {  
